@@ -7,6 +7,15 @@ FPS = 60
 
 WHITE = (255, 255, 255)
 
+SHADOW =    {
+                'img1' : pygame.Rect(265, 130, 210, 143),
+                'img2' : pygame.Rect(515, 130, 210, 143),                    
+                'img3' : pygame.Rect(265, 303, 210, 143),
+                'img4' : pygame.Rect(515, 303, 210, 143),
+                'img5' : pygame.Rect(265, 476, 210, 143),                    
+                'img6' : pygame.Rect(515, 476, 210, 143)
+            }
+
 IMAGE = {
             'background' : pygame.image.load(os.path.join('images', 'background.jpeg')),
             
