@@ -5,16 +5,12 @@ pygame.init()
 
 FPS = 60
 
-WHITE = (255, 255, 255)
-
-SHADOW =    {
-                'img1' : pygame.Rect(265, 130, 210, 143),
-                'img2' : pygame.Rect(515, 130, 210, 143),                    
-                'img3' : pygame.Rect(265, 303, 210, 143),
-                'img4' : pygame.Rect(515, 303, 210, 143),
-                'img5' : pygame.Rect(265, 476, 210, 143),                    
-                'img6' : pygame.Rect(515, 476, 210, 143)
+COLORS =    {
+                'white' : (255, 255, 255),
+                'black' : (0, 0, 0),
+                'grey' : (92, 92, 92)           
             }
+
 
 IMAGE = {
             'background' : pygame.image.load(os.path.join('images', 'background.jpeg')),
@@ -22,6 +18,22 @@ IMAGE = {
             'img1' : pygame.image.load(os.path.join('images', '01.jpeg')),
             'img2' : pygame.image.load(os.path.join('images', '02.jpeg')),
             'img3' : pygame.image.load(os.path.join('images', '03.jpeg')),
+
+            'shadow1' : pygame.Rect(265, 130, 210, 143),
+            'shadow2' : pygame.Rect(515, 130, 210, 143),                    
+            'shadow3' : pygame.Rect(265, 303, 210, 143),
+            'shadow4' : pygame.Rect(515, 303, 210, 143),
+            'shadow5' : pygame.Rect(265, 476, 210, 143),                    
+            'shadow6' : pygame.Rect(515, 476, 210, 143),
+
+            'backside1' : pygame.Rect(270, 135, 200, 133),
+            'backside2' : pygame.Rect(520, 135, 200, 133),
+            'backside3' : pygame.Rect(270, 308, 200, 133),
+            'backside4' : pygame.Rect(520, 308, 200, 133),
+            'backside5' : pygame.Rect(270, 481, 200, 133),
+            'backside6' : pygame.Rect(520, 481, 200, 133),
+            
+            'tire' : pygame.image.load(os.path.join('images', 'tire.jpeg')),
 
             'header' : pygame.image.load(os.path.join('images', 'header.png'))
         }
@@ -44,8 +56,8 @@ SIZE =  {
             'next_button' : (200, 200),
             'success_icon' : (80,80),
             'fail_icon' : (80,80),
-            'home_button' : (100,100)
-
+            'home_button' : (100,100),
+            'img' : (200, 133)
         }
 
 
@@ -70,6 +82,13 @@ POSITION =  {
                 'success_icon' : (460,23),
                 'fail_icon' : (460,23),
 
+                'tire1' : (318, 152),
+                'tire2' : (568, 152),
+                'tire3' : (318, 325),
+                'tire4' : (568, 325),
+                'tire5' : (318, 498),
+                'tire6' : (568, 498),
+
                 'img1' : (270, 135),
                 'img2' : (520, 135),
                 'img3' : (270, 308),
@@ -84,9 +103,9 @@ POSITION =  {
 FONT = pygame.font.SysFont('comicsans', 70)
 
 TEXT =  {
-            'play' : FONT.render('PLAY', True, WHITE),
-            'time' : FONT.render('00:00:00', True, WHITE),
-            'result' : FONT.render('Time: 00:00:00', True, WHITE)
+            'play' : FONT.render('PLAY', True, COLORS['white']),
+            'time' : FONT.render('00:00:00', True, COLORS['white']),
+            'result' : FONT.render('Time: 00:00:00', True, COLORS['white'])
         }
 
 pygame.quit()
