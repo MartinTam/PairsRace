@@ -335,7 +335,7 @@ def main():
             if (0 <= chooseIMG(x,y) <= 5):
 
                 if chooseIMG(x,y) == first or chooseIMG(x,y) == second:
-                    stage = 5
+                    stage = 6
                 else:
                     showIMG(first, second, third, chooseIMG(x,y))
                     forth = chooseIMG(x,y)
@@ -391,7 +391,7 @@ def main():
             if (0 <= chooseIMG(x,y) <= 5):
 
                 if chooseIMG(x,y) == first or chooseIMG(x,y) == second or chooseIMG(x,y) == third or chooseIMG(x,y) == forth:
-                    stage = 9
+                    stage = 10
                 else:
                     showIMG(first, second, third, forth, fifth, chooseIMG(x,y))
                     sixth = chooseIMG(x,y)
@@ -449,6 +449,7 @@ def main():
             click = False
 
         if (stage == 14) and click and clickExit(x,y):
+    
             break
 
     
