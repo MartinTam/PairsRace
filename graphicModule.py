@@ -49,7 +49,8 @@ LOAD_BUTTON_ORG =   {
                         'next' : pygame.image.load(os.path.join('images', 'next.png')),
                         'success' : pygame.image.load(os.path.join('images', 'success.png')),
                         'fail' : pygame.image.load(os.path.join('images', 'fail.png')),
-                        'home' : pygame.image.load(os.path.join('images', 'home.png'))
+                        'home' : pygame.image.load(os.path.join('images', 'home.png')),
+                        'exit' : pygame.image.load(os.path.join('images', 'exit.png'))
                     }
 
 
@@ -61,7 +62,8 @@ SIZE =  {
             'success_icon' : (80,80),
             'fail_icon' : (80,80),
             'home_button' : (100,100),
-            'img' : (200, 133)
+            'img' : (200, 133),
+            'exit_button' : (100,100)
         }
 
 
@@ -71,7 +73,8 @@ BUTTON =    {
                 'next' : pygame.transform.scale( LOAD_BUTTON_ORG['next'], SIZE['next_button'] ),
                 'success' : pygame.transform.scale( LOAD_BUTTON_ORG['success'], SIZE['success_icon'] ),
                 'fail' : pygame.transform.scale( LOAD_BUTTON_ORG['fail'], SIZE['fail_icon'] ),
-                'home' : pygame.transform.scale( LOAD_BUTTON_ORG['home'], SIZE['home_button'] )
+                'home' : pygame.transform.scale( LOAD_BUTTON_ORG['home'], SIZE['home_button'] ),
+                'exit' : pygame.transform.scale( LOAD_BUTTON_ORG['exit'], SIZE['exit_button'] )
             }
 
 
@@ -101,7 +104,8 @@ POSITION =  {
                 'img6' : (520, 481),
 
                 'text_result' : (325,230),
-                'home_button' : (445,395)
+                'home_button' : (345,345),
+                'exit_button' : (545,345)
             }
 
 FONT = pygame.font.SysFont('comicsans', 70)
