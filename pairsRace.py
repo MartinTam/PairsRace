@@ -451,11 +451,7 @@ def main():
         if (stage == 14) and click and clickExit(x,y):
     
             break
-
-    
-
-        
-        
+            
 
     pygame.quit()
 
