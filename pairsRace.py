@@ -280,7 +280,7 @@ def showResult():
 
 def clickHome(x,y):
 
-    if (x >= 445) and (x <= 545) and (y >= 395) and (y <= 405):
+    if (x >= 445) and (x <= 545) and (y >= 395) and (y <= 495):
         return True
     else:
         return False
@@ -330,6 +330,7 @@ def main():
         
         if clickPlay(x,y) and (stage == 0):
             play()
+            click = False
             stage = 1
         
         # ---------------------------------------------------------------------------------------------
@@ -496,12 +497,23 @@ def main():
             showResult()
             click = False
             stage = 14
-        
-        if stage == 14 and clickHome(x,y) and click:
-            home()
-            stage = 0
-        
 
+
+        if (stage == 14) and click and clickHome(x,y):
+            
+            stage = 0
+            first = 6
+            second = 6
+            third = 6
+            forth = 6
+            fifth = 6
+            sixth = 6
+            click = False
+
+    
+
+        
+        
 
     pygame.quit()
 
