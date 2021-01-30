@@ -183,7 +183,7 @@ def chooseIMG(x,y):
         return 6
 
 
-def showIMG(choice1 = 6, choice2 = 6, success = False, wrong = False):
+def showIMG(choice1 = 6, choice2 = 6,  choice3 = 6, choice4 = 6, choice5 = 6, choice6 = 6, success = False, wrong = False):
 
     WIN.fill(graphicModule.COLORS['white'])
     WIN.blit(graphicModule.IMAGE['background'], graphicModule.POSITION['background'])
@@ -215,32 +215,32 @@ def showIMG(choice1 = 6, choice2 = 6, success = False, wrong = False):
     WIN.blit(graphicModule.IMAGE['tire'], graphicModule.POSITION['tire6'])
 
 
-    if choice1 == 0 or choice2 == 0:
+    if choice1 == 0 or choice2 == 0 or choice3 == 0 or choice4 == 0 or choice5 == 0 or choice6 == 0:
         
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow1'])
         WIN.blit(graphicModule.RANDOM_IMG[0], graphicModule.POSITION['img1'])
     
-    if choice1 == 1 or choice2 == 1:
+    if choice1 == 1 or choice2 == 1 or choice3 == 1 or choice4 == 1 or choice5 == 1 or choice6 == 1:
     
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow2'])
         WIN.blit(graphicModule.RANDOM_IMG[1], graphicModule.POSITION['img2'])
     
-    if choice1 == 2 or choice2 == 2:
+    if choice1 == 2 or choice2 == 2 or choice3 == 2 or choice4 == 2 or choice5 == 2 or choice6 == 2:
 
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow3'])
         WIN.blit(graphicModule.RANDOM_IMG[2], graphicModule.POSITION['img3'])
 
-    if choice1 == 3 or choice2 == 3:
+    if choice1 == 3 or choice2 == 3 or choice3 == 3 or choice4 == 3 or choice5 == 3 or choice6 == 3:
 
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow4'])
         WIN.blit(graphicModule.RANDOM_IMG[3], graphicModule.POSITION['img4'])
 
-    if choice1 == 4 or choice2 == 4:
+    if choice1 == 4 or choice2 == 4 or choice3 == 4 or choice4 == 4 or choice5 == 4 or choice6 == 4:
 
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow5'])
         WIN.blit(graphicModule.RANDOM_IMG[4], graphicModule.POSITION['img5'])
 
-    if choice1 == 5 or choice2 == 5:
+    if choice1 == 5 or choice2 == 5 or choice3 == 5 or choice4 == 5 or choice5 == 5 or choice6 == 5:
         
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow6'])
         WIN.blit(graphicModule.RANDOM_IMG[5], graphicModule.POSITION['img6'])
@@ -268,6 +268,24 @@ def clickNext(x,y):
         return False
 
 
+def showResult():
+
+    WIN.fill(graphicModule.COLORS['white'])
+    WIN.blit(graphicModule.IMAGE['background'], graphicModule.POSITION['background'])
+
+    WIN.blit(graphicModule.TEXT['result'], graphicModule.POSITION['text_result'])
+    WIN.blit(graphicModule.BUTTON['home'], graphicModule.POSITION['home_button'])
+    pygame.display.update()
+
+
+def clickHome(x,y):
+
+    if (x >= 445) and (x <= 545) and (y >= 395) and (y <= 405):
+        return True
+    else:
+        return False
+
+
 def main():
 
     run = True
@@ -280,6 +298,10 @@ def main():
 
     first = 6
     second = 6
+    third = 6
+    forth = 6
+    fifth = 6
+    sixth = 6
 
     click = False
 
@@ -304,12 +326,14 @@ def main():
 
         if stage == 0:
             home()
-            #random.shuffle(graphicModule.RANDOM_IMG)
+            random.shuffle(graphicModule.RANDOM_IMG)
         
         if clickPlay(x,y) and (stage == 0):
             play()
             stage = 1
         
+        # ---------------------------------------------------------------------------------------------
+
         if clickIMG(x,y) and (stage == 1):
 
             showIMG(chooseIMG(x,y))
@@ -330,19 +354,20 @@ def main():
 
         if stage == 3 and (graphicModule.RANDOM_IMG[first] == graphicModule.RANDOM_IMG[second]):
             success = True
-            showIMG(first, second, success)
+            showIMG(first, second, 6, 6, 6, 6, success)
             stage = 4
 
         
         if stage == 3 and (graphicModule.RANDOM_IMG[first] != graphicModule.RANDOM_IMG[second]):
             wrong = True
-            showIMG(first, second, success, wrong)
+            showIMG(first, second, 6, 6, 6, 6, success, wrong)
             stage = 4
         
         if stage == 4 and click and clickNext(x,y):
 
             if success == True:
                 showIMG(first,second)
+                success = False
                 stage = 5
             
             if wrong == True:
@@ -352,12 +377,131 @@ def main():
 
             click = False
         
-        if stage == 5:
-            showIMG(first,second)
+        # -----------------------------------------------------------------------------------------------
+
+        if stage == 5 and clickIMG(x,y):
+
+            if (0 <= chooseIMG(x,y) <= 5):
+
+                if chooseIMG(x,y) == first or chooseIMG(x,y) == second:
+                    stage = 5
+                else:
+                    showIMG(first,second, chooseIMG(x,y))
+                    third = chooseIMG(x,y)
+                    click = False
+                    stage = 6        
         
+        if clickIMG(x,y) and click and (stage == 6):
+
+            if (0 <= chooseIMG(x,y) <= 5):
+
+                if chooseIMG(x,y) == first or chooseIMG(x,y) == second:
+                    stage = 5
+                else:
+                    showIMG(first, second, third, chooseIMG(x,y))
+                    forth = chooseIMG(x,y)
+                    click = False
+                    if third == forth:
+                        stage = 6
+                    else:
+                        stage = 7
         
 
+        if stage == 7 and (graphicModule.RANDOM_IMG[third] == graphicModule.RANDOM_IMG[forth]):
+            success = True
+            showIMG(first, second, third, forth, 6, 6, success)
+            stage = 8
+
         
+        if stage == 7 and (graphicModule.RANDOM_IMG[third] != graphicModule.RANDOM_IMG[forth]):
+            wrong = True
+            showIMG(first, second, third, forth, 6, 6, success, wrong)
+            stage = 8
+        
+        if stage == 8 and click and clickNext(x,y):
+
+            if success == True:
+                showIMG(first,second, third, forth)
+                success = False
+                stage = 9
+            
+            if wrong == True:
+                showIMG(first, second)
+                wrong = False
+                stage = 5
+
+
+            click = False
+
+        # -----------------------------------------------------------------------------------------------
+
+        if stage == 9 and clickIMG(x,y):
+
+            if (0 <= chooseIMG(x,y) <= 5):
+
+                if chooseIMG(x,y) == first or chooseIMG(x,y) == second or chooseIMG(x,y) == third or chooseIMG(x,y) == forth:
+                    stage = 9
+                else:
+                    showIMG(first,second, third, forth, chooseIMG(x,y))
+                    fifth = chooseIMG(x,y)
+                    click = False
+                    stage = 10        
+        
+        if clickIMG(x,y) and click and (stage == 10):
+
+            if (0 <= chooseIMG(x,y) <= 5):
+
+                if chooseIMG(x,y) == first or chooseIMG(x,y) == second or chooseIMG(x,y) == third or chooseIMG(x,y) == forth:
+                    stage = 9
+                else:
+                    showIMG(first, second, third, forth, fifth, chooseIMG(x,y))
+                    sixth = chooseIMG(x,y)
+                    click = False
+                    if fifth == sixth:
+                        stage = 10
+                    else:
+                        stage = 11
+        
+
+        if stage == 11 and (graphicModule.RANDOM_IMG[fifth] == graphicModule.RANDOM_IMG[sixth]):
+            success = True
+            showIMG(first, second, third, forth, fifth, sixth, success)
+            stage = 12
+
+        
+        if stage == 11 and (graphicModule.RANDOM_IMG[fifth] != graphicModule.RANDOM_IMG[sixth]):
+            wrong = True
+            showIMG(first, second, third, forth, fifth, sixth, success, wrong)
+            stage = 12
+        
+        if stage == 12 and click and clickNext(x,y):
+
+            if success == True:
+                showIMG(first,second, third, forth, fifth, sixth)
+                success = False
+                stage = 13
+            
+            if wrong == True:
+                showIMG(first, second, third, forth)
+                wrong = False
+                stage = 9
+
+
+            click = False
+
+        # -----------------------------------------------------------------------------------------------
+
+        if stage == 13 and clickNext(x,y):
+
+            showResult()
+            click = False
+            stage = 14
+        
+        if stage == 14 and clickHome(x,y) and click:
+            home()
+            stage = 0
+        
+
 
     pygame.quit()
 
