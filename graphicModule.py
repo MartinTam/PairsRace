@@ -103,7 +103,7 @@ POSITION =  {
                 'img5' : (270, 481),
                 'img6' : (520, 481),
 
-                'text_result' : (325,230),
+                'text_result' : (375,230),
                 'home_button' : (345,345),
                 'exit_button' : (545,345)
             }
@@ -112,8 +112,7 @@ FONT = pygame.font.SysFont('comicsans', 70)
 
 TEXT =  {
             'play' : FONT.render('PLAY', True, COLORS['white']),
-            'time' : FONT.render('00:00:00', True, COLORS['white']),
-            'result' : FONT.render('Time: 00:00:00', True, COLORS['white'])
+            'result' : FONT.render('Well done!', True, COLORS['white'])
         }
 
 pygame.quit()

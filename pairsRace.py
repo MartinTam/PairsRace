@@ -36,7 +36,6 @@ def play():
     WIN.fill(graphicModule.COLORS['white'])
     WIN.blit(graphicModule.IMAGE['background'], graphicModule.POSITION['background'])
 
-    WIN.blit(graphicModule.TEXT['time'], graphicModule.POSITION['text_time'])
 
     pygame.draw.rect(WIN, graphicModule.COLORS['black'], graphicModule.IMAGE['shadow1'])
     pygame.draw.rect(WIN, graphicModule.COLORS['grey'], graphicModule.IMAGE['backside1'])
@@ -117,7 +116,6 @@ def showIMG(choice1 = 6, choice2 = 6,  choice3 = 6, choice4 = 6, choice5 = 6, ch
     WIN.fill(graphicModule.COLORS['white'])
     WIN.blit(graphicModule.IMAGE['background'], graphicModule.POSITION['background'])
 
-    WIN.blit(graphicModule.TEXT['time'], graphicModule.POSITION['text_time'])
 
     pygame.draw.rect(WIN, graphicModule.COLORS['black'], graphicModule.IMAGE['shadow1'])
     pygame.draw.rect(WIN, graphicModule.COLORS['grey'], graphicModule.IMAGE['backside1'])
@@ -245,6 +243,9 @@ def main():
 
     success = False
     wrong = False
+
+    start_time = 0
+    passed_time = 0
 
     while run:
 
