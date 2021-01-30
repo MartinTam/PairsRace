@@ -40,6 +40,10 @@ IMAGE = {
 
 
 
+RANDOM_IMG = [ IMAGE['img1'], IMAGE['img2'], IMAGE['img3'], IMAGE['img1'], IMAGE['img2'], IMAGE['img3'] ]
+
+
+
 LOAD_BUTTON_ORG =   {
                         'play' : pygame.image.load(os.path.join('images', 'play.png')),
                         'next' : pygame.image.load(os.path.join('images', 'next.png')),

@@ -1,6 +1,7 @@
 import pygame
 import os
 import graphicModule
+import random
 
 pygame.init()
 
@@ -28,7 +29,7 @@ def draw():
     WIN.blit(graphicModule.BUTTON['next'], graphicModule.POSITION['next_button'])
     
     WIN.blit(graphicModule.BUTTON['success'], graphicModule.POSITION['success_icon'])
-    #WIN.blit(graphicModule.BUTTON['fail'], graphicModule.POSITION['fail_icon'])
+    WIN.blit(graphicModule.BUTTON['fail'], graphicModule.POSITION['fail_icon'])
 
 
     '''
@@ -161,28 +162,28 @@ def clickIMG(x,y):
 def chooseIMG(x,y):
 
     if (x >= 265) and (x <= 475) and (y >= 130) and (y <= 273):
-        return 1
+        return 0
     
     elif (x >= 515) and (x <= 725) and (y >= 130) and (y <= 273):
-        return 2
+        return 1
 
     elif (x >= 265) and (x <= 475) and (y >= 303) and (y <= 446):
-        return 3
+        return 2
 
     elif (x >= 515) and (x <= 752) and (y >= 303) and (y <= 446):
-        return 4
+        return 3
 
     elif (x >= 265) and (x <= 475) and (y >= 476) and (y <= 619):
-        return 5
+        return 4
 
     elif (x >= 515) and (x <= 725) and (y >= 476) and (y <= 619):
-        return 6
+        return 5
     
     else:
-        return 0
+        return 6
 
 
-def showIMG(choice1 = 0, choice2 = 0):
+def showIMG(choice1 = 6, choice2 = 6, success = False, wrong = False):
 
     WIN.fill(graphicModule.COLORS['white'])
     WIN.blit(graphicModule.IMAGE['background'], graphicModule.POSITION['background'])
@@ -214,70 +215,57 @@ def showIMG(choice1 = 0, choice2 = 0):
     WIN.blit(graphicModule.IMAGE['tire'], graphicModule.POSITION['tire6'])
 
 
-    if choice1 == 1:
+    if choice1 == 0 or choice2 == 0:
         
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow1'])
-        WIN.blit(graphicModule.IMAGE['img1'], graphicModule.POSITION['img1'])
+        WIN.blit(graphicModule.RANDOM_IMG[0], graphicModule.POSITION['img1'])
     
-    if choice1 == 2:
-    
-        pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow2'])
-        WIN.blit(graphicModule.IMAGE['img2'], graphicModule.POSITION['img2'])
-    
-    if choice1 == 3:
-
-        pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow3'])
-        WIN.blit(graphicModule.IMAGE['img2'], graphicModule.POSITION['img3'])
-
-    if choice1 == 4:
-
-        pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow4'])
-        WIN.blit(graphicModule.IMAGE['img3'], graphicModule.POSITION['img4'])
-
-    if choice1 == 5:
-
-        pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow5'])
-        WIN.blit(graphicModule.IMAGE['img3'], graphicModule.POSITION['img5'])
-
-    if choice1 == 6:
-        
-        pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow6'])
-        WIN.blit(graphicModule.IMAGE['img1'], graphicModule.POSITION['img6'])
-    
-    ###
-
-    if choice2 == 1:
-        
-        pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow1'])
-        WIN.blit(graphicModule.IMAGE['img1'], graphicModule.POSITION['img1'])
-    
-    if choice2 == 2:
+    if choice1 == 1 or choice2 == 1:
     
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow2'])
-        WIN.blit(graphicModule.IMAGE['img2'], graphicModule.POSITION['img2'])
+        WIN.blit(graphicModule.RANDOM_IMG[1], graphicModule.POSITION['img2'])
     
-    if choice2 == 3:
+    if choice1 == 2 or choice2 == 2:
 
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow3'])
-        WIN.blit(graphicModule.IMAGE['img2'], graphicModule.POSITION['img3'])
+        WIN.blit(graphicModule.RANDOM_IMG[2], graphicModule.POSITION['img3'])
 
-    if choice2 == 4:
+    if choice1 == 3 or choice2 == 3:
 
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow4'])
-        WIN.blit(graphicModule.IMAGE['img3'], graphicModule.POSITION['img4'])
+        WIN.blit(graphicModule.RANDOM_IMG[3], graphicModule.POSITION['img4'])
 
-    if choice2 == 5:
+    if choice1 == 4 or choice2 == 4:
 
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow5'])
-        WIN.blit(graphicModule.IMAGE['img3'], graphicModule.POSITION['img5'])
+        WIN.blit(graphicModule.RANDOM_IMG[4], graphicModule.POSITION['img5'])
 
-    if choice2 == 6:
+    if choice1 == 5 or choice2 == 5:
         
         pygame.draw.rect(WIN, graphicModule.COLORS['white'], graphicModule.IMAGE['shadow6'])
-        WIN.blit(graphicModule.IMAGE['img1'], graphicModule.POSITION['img6'])
+        WIN.blit(graphicModule.RANDOM_IMG[5], graphicModule.POSITION['img6'])
+    
+
+
+    if success:
+        WIN.blit(graphicModule.BUTTON['success'], graphicModule.POSITION['success_icon'])
+        WIN.blit(graphicModule.BUTTON['next'], graphicModule.POSITION['next_button'])
+    
+    if wrong:
+        WIN.blit(graphicModule.BUTTON['fail'], graphicModule.POSITION['fail_icon'])
+        WIN.blit(graphicModule.BUTTON['next'], graphicModule.POSITION['next_button'])
 
     
     pygame.display.update()
+
+
+
+def clickNext(x,y):
+
+    if (x >= 775) and (x <= 975) and (y >= 525) and (y <= 725):
+        return True
+    else:
+        return False
 
 
 def main():
@@ -290,10 +278,13 @@ def main():
 
     stage = 0
 
-    first = 0
-    second = 0
+    first = 6
+    second = 6
 
     click = False
+
+    success = False
+    wrong = False
 
     while run:
 
@@ -313,6 +304,7 @@ def main():
 
         if stage == 0:
             home()
+            #random.shuffle(graphicModule.RANDOM_IMG)
         
         if clickPlay(x,y) and (stage == 0):
             play()
@@ -330,12 +322,41 @@ def main():
             showIMG(first, chooseIMG(x,y))
             second = chooseIMG(x,y)
             click = False
-            stage = 3
+            if first == second:
+                stage = 2
+            else:
+                stage = 3
 
 
-        if stage == 3:
-            showIMG(first, second)
+        if stage == 3 and (graphicModule.RANDOM_IMG[first] == graphicModule.RANDOM_IMG[second]):
+            success = True
+            showIMG(first, second, success)
+            stage = 4
+
         
+        if stage == 3 and (graphicModule.RANDOM_IMG[first] != graphicModule.RANDOM_IMG[second]):
+            wrong = True
+            showIMG(first, second, success, wrong)
+            stage = 4
+        
+        if stage == 4 and click and clickNext(x,y):
+
+            if success == True:
+                showIMG(first,second)
+                stage = 5
+            
+            if wrong == True:
+                showIMG()
+                wrong = False
+                stage = 1
+
+            click = False
+        
+        if stage == 5:
+            showIMG(first,second)
+        
+        
+
         
 
     pygame.quit()
