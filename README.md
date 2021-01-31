@@ -16,4 +16,4 @@ Images used in the game are from [Unsplash.com](https://unsplash.com/).
 
 # License
 
-The code is available under the [MIT](https://github.com/MartinTam/Ctest/blob/master/LICENSE) license.
+The code is available under the [MIT](https://github.com/MartinTam/PairsRace/blob/main/LICENSE) license.
